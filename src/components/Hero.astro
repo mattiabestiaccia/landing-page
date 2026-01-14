@@ -1,0 +1,133 @@
+---
+interface Props {
+  name: string;
+  title: string;
+  tagline: string;
+  avatarUrl?: string;
+}
+
+const { name, title, tagline, avatarUrl } = Astro.props;
+---
+
+<section id="about" class="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden">
+  <!-- Background gradient -->
+  <div class="absolute inset-0 bg-gradient-to-br from-primary-50 via-surface-50 to-accent-400/10 dark:from-surface-950 dark:via-surface-900 dark:to-primary-950"></div>
+
+  <!-- Animated background elements -->
+  <div class="absolute inset-0 overflow-hidden">
+    <div class="absolute -top-40 -right-40 w-80 h-80 bg-primary-400/20 dark:bg-primary-600/10 rounded-full blur-3xl"></div>
+    <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-accent-400/20 dark:bg-accent-600/10 rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+      <!-- Text content -->
+      <div class="flex-1 text-center lg:text-left space-y-6">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-100 dark:bg-primary-900/50 text-primary-700 dark:text-primary-300 text-sm font-medium">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-500 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-primary-600"></span>
+          </span>
+          Available for new opportunities
+        </div>
+
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-surface-900 dark:text-surface-100">
+          Hi, I'm <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-accent-500">{name}</span>
+        </h1>
+
+        <h2 class="text-xl sm:text-2xl font-medium text-surface-700 dark:text-surface-300">
+          {title}
+        </h2>
+
+        <p class="text-lg text-surface-600 dark:text-surface-400 max-w-xl mx-auto lg:mx-0">
+          {tagline}
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+          <a
+            href="#projects"
+            class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-primary-600 hover:bg-primary-700 text-white font-medium transition-all hover:shadow-lg hover:shadow-primary-500/25"
+          >
+            View Projects
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+          <a
+            href="/cv-mattia-bruscia.pdf"
+            download
+            class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-accent-500 hover:bg-accent-600 text-white font-medium transition-all hover:shadow-lg hover:shadow-accent-500/25"
+          >
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            Download CV
+          </a>
+          <a
+            href="#contact"
+            class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg border-2 border-surface-300 dark:border-surface-700 text-surface-700 dark:text-surface-300 font-medium hover:border-primary-500 hover:text-primary-600 dark:hover:text-primary-400 transition-all"
+          >
+            Get in Touch
+          </a>
+        </div>
+
+        <!-- Stats -->
+        <div class="flex flex-wrap gap-8 justify-center lg:justify-start pt-8">
+          <div class="text-center">
+            <div class="text-3xl font-bold text-primary-600 dark:text-primary-400">3+</div>
+            <div class="text-sm text-surface-600 dark:text-surface-400">Years Experience</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl font-bold text-primary-600 dark:text-primary-400">110+</div>
+            <div class="text-sm text-surface-600 dark:text-surface-400">Commits on Evodigit</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl font-bold text-primary-600 dark:text-primary-400">3</div>
+            <div class="text-sm text-surface-600 dark:text-surface-400">Publications</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Avatar/Image -->
+      <div class="relative">
+        <div class="relative w-64 h-64 lg:w-80 lg:h-80">
+          <!-- Decorative ring -->
+          <div class="absolute inset-0 rounded-full bg-gradient-to-r from-primary-500 to-accent-500 p-1">
+            <div class="w-full h-full rounded-full bg-surface-50 dark:bg-surface-900"></div>
+          </div>
+
+          {avatarUrl ? (
+            <img
+              src={avatarUrl}
+              alt={name}
+              class="absolute inset-2 w-[calc(100%-16px)] h-[calc(100%-16px)] rounded-full object-cover"
+            />
+          ) : (
+            <div class="absolute inset-2 w-[calc(100%-16px)] h-[calc(100%-16px)] rounded-full bg-gradient-to-br from-primary-400 to-accent-500 flex items-center justify-center">
+              <svg class="w-24 h-24 text-white/80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+            </div>
+          )}
+        </div>
+
+        <!-- Floating badges -->
+        <div class="absolute -top-4 -right-4 px-3 py-1 rounded-full bg-surface-50 dark:bg-surface-800 shadow-lg text-sm font-medium text-surface-700 dark:text-surface-300">
+          LangChain
+        </div>
+        <div class="absolute -bottom-4 -left-4 px-3 py-1 rounded-full bg-surface-50 dark:bg-surface-800 shadow-lg text-sm font-medium text-surface-700 dark:text-surface-300">
+          Prompt Eng.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+    <a href="#skills" class="text-surface-400 hover:text-primary-500 transition-colors">
+      <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+      </svg>
+    </a>
+  </div>
+</section>

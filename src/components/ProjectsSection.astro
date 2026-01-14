@@ -1,0 +1,101 @@
+---
+import ProjectCard from './ProjectCard.astro';
+
+interface Project {
+  title: string;
+  description: string;
+  image?: string;
+  tags: string[];
+  githubUrl?: string;
+  demoUrl?: string;
+  slug?: string;
+}
+
+interface Props {
+  projects?: Project[];
+}
+
+const defaultProjects: Project[] = [
+  {
+    title: "LLM-Powered Document Q&A",
+    description: "A RAG-based system that allows users to ask questions about their documents using advanced language models. Built with LangChain and vector databases.",
+    tags: ["LangChain", "OpenAI", "Pinecone", "FastAPI", "React"],
+    githubUrl: "https://github.com",
+    demoUrl: "https://demo.example.com",
+    slug: "llm-document-qa"
+  },
+  {
+    title: "Real-time Object Detection",
+    description: "Computer vision system for real-time object detection and tracking using YOLOv8. Deployed on edge devices with optimized inference.",
+    tags: ["PyTorch", "YOLOv8", "OpenCV", "ONNX", "Jetson"],
+    githubUrl: "https://github.com",
+    slug: "object-detection"
+  },
+  {
+    title: "Sentiment Analysis Pipeline",
+    description: "End-to-end NLP pipeline for social media sentiment analysis with custom fine-tuned BERT model. Processes millions of posts daily.",
+    tags: ["Transformers", "BERT", "Spark", "Airflow", "AWS"],
+    githubUrl: "https://github.com",
+    slug: "sentiment-analysis"
+  },
+  {
+    title: "Recommendation Engine",
+    description: "Hybrid recommendation system combining collaborative filtering and content-based approaches. Increased user engagement by 40%.",
+    tags: ["TensorFlow", "Redis", "Docker", "Kubernetes", "GCP"],
+    githubUrl: "https://github.com",
+    demoUrl: "https://demo.example.com",
+    slug: "recommendation-engine"
+  },
+  {
+    title: "Time Series Forecasting",
+    description: "Deep learning models for demand forecasting in retail. Implemented LSTM and Transformer architectures for multi-step predictions.",
+    tags: ["PyTorch", "Prophet", "MLflow", "Databricks", "Azure"],
+    githubUrl: "https://github.com",
+    slug: "time-series"
+  },
+  {
+    title: "AI Chatbot Platform",
+    description: "Multi-tenant chatbot platform with custom persona training. Supports multiple LLM backends and integrates with various messaging platforms.",
+    tags: ["GPT-4", "LangChain", "PostgreSQL", "WebSocket", "Docker"],
+    githubUrl: "https://github.com",
+    demoUrl: "https://demo.example.com",
+    slug: "chatbot-platform"
+  }
+];
+
+const { projects = defaultProjects } = Astro.props;
+---
+
+<section id="projects" class="py-20">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section header -->
+    <div class="text-center mb-16">
+      <h2 class="text-3xl sm:text-4xl font-bold text-surface-900 dark:text-surface-100 mb-4">
+        Featured Projects
+      </h2>
+      <p class="text-lg text-surface-600 dark:text-surface-400 max-w-2xl mx-auto">
+        A selection of AI/ML projects I've worked on, from research to production.
+      </p>
+    </div>
+
+    <!-- Projects grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {projects.map((project) => (
+        <ProjectCard {...project} />
+      ))}
+    </div>
+
+    <!-- View all link -->
+    <div class="text-center mt-12">
+      <a
+        href="/projects"
+        class="inline-flex items-center gap-2 px-6 py-3 rounded-lg border-2 border-surface-300 dark:border-surface-700 text-surface-700 dark:text-surface-300 font-medium hover:border-primary-500 hover:text-primary-600 dark:hover:text-primary-400 transition-all"
+      >
+        View All Projects
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

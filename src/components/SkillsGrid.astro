@@ -1,0 +1,108 @@
+---
+interface Skill {
+  name: string;
+  icon: string;
+  category: 'ml' | 'data' | 'cloud' | 'tools';
+}
+
+interface Props {
+  skills?: Skill[];
+}
+
+const defaultSkills: Skill[] = [
+  // AI & Prompt Engineering
+  { name: 'Prompt Engineering', icon: 'prompt', category: 'ml' },
+  { name: 'LangChain', icon: 'langchain', category: 'ml' },
+  { name: 'OpenAI', icon: 'openai', category: 'ml' },
+  { name: 'Anthropic', icon: 'anthropic', category: 'ml' },
+  { name: 'Hugging Face', icon: 'huggingface', category: 'ml' },
+  { name: 'PyTorch', icon: 'pytorch', category: 'ml' },
+  // Programming & Frameworks
+  { name: 'Python', icon: 'python', category: 'data' },
+  { name: 'Django', icon: 'django', category: 'data' },
+  { name: 'MATLAB', icon: 'matlab', category: 'data' },
+  { name: 'TensorFlow', icon: 'tensorflow', category: 'data' },
+  // Domains & Specializations
+  { name: 'UAV Analysis', icon: 'uav', category: 'cloud' },
+  { name: 'Computer Vision', icon: 'cv', category: 'cloud' },
+  { name: 'Robotics', icon: 'robot', category: 'cloud' },
+  { name: 'Security Audit', icon: 'security', category: 'cloud' },
+  // Tools & Automation
+  { name: 'n8n', icon: 'n8n', category: 'tools' },
+  { name: 'Git', icon: 'git', category: 'tools' },
+  { name: 'Docker', icon: 'docker', category: 'tools' },
+  { name: 'Bootstrap', icon: 'bootstrap', category: 'tools' },
+];
+
+const { skills = defaultSkills } = Astro.props;
+
+const categories = {
+  ml: { label: 'AI & Prompt Engineering', color: 'primary' },
+  data: { label: 'Programming & Frameworks', color: 'accent' },
+  cloud: { label: 'Domains & Specializations', color: 'primary' },
+  tools: { label: 'Tools & Automation', color: 'accent' },
+};
+---
+
+<section id="skills" class="py-20 bg-surface-100/50 dark:bg-surface-900/50">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section header -->
+    <div class="text-center mb-16">
+      <h2 class="text-3xl sm:text-4xl font-bold text-surface-900 dark:text-surface-100 mb-4">
+        Skills & Technologies
+      </h2>
+      <p class="text-lg text-surface-600 dark:text-surface-400 max-w-2xl mx-auto">
+        The tools and technologies I use to bring AI solutions to life.
+      </p>
+    </div>
+
+    <!-- Skills by category -->
+    <div class="space-y-12">
+      {Object.entries(categories).map(([key, { label }]) => {
+        const categorySkills = skills.filter(s => s.category === key);
+        if (categorySkills.length === 0) return null;
+
+        return (
+          <div>
+            <h3 class="text-lg font-semibold text-surface-700 dark:text-surface-300 mb-6 flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-primary-500"></span>
+              {label}
+            </h3>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+              {categorySkills.map((skill) => (
+                <div class="group flex flex-col items-center gap-3 p-4 rounded-xl bg-surface-50 dark:bg-surface-800 border border-surface-200 dark:border-surface-700 hover:border-primary-400 dark:hover:border-primary-500 hover:shadow-lg hover:shadow-primary-500/10 transition-all cursor-default">
+                  <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-primary-100 to-accent-100 dark:from-primary-900/50 dark:to-accent-900/50 flex items-center justify-center text-primary-600 dark:text-primary-400 group-hover:scale-110 transition-transform">
+                    <span class="text-xl font-bold">{skill.name.slice(0, 2)}</span>
+                  </div>
+                  <span class="text-sm font-medium text-surface-700 dark:text-surface-300 text-center">
+                    {skill.name}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+
+    <!-- Additional info -->
+    <div class="mt-16 p-6 rounded-2xl bg-gradient-to-r from-primary-500/10 to-accent-500/10 border border-primary-200 dark:border-primary-800">
+      <div class="flex flex-col md:flex-row items-center gap-6 text-center md:text-left">
+        <div class="flex-shrink-0 w-16 h-16 rounded-full bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center">
+          <svg class="w-8 h-8 text-primary-600 dark:text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
+        </div>
+        <div class="flex-1">
+          <h4 class="text-lg font-semibold text-surface-900 dark:text-surface-100 mb-1">
+            Always Learning
+          </h4>
+          <p class="text-surface-600 dark:text-surface-400">
+            Constantly exploring new technologies in the rapidly evolving AI landscape.
+            Currently diving deep into multi-modal AI, AI agents, and efficient LLM fine-tuning techniques.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
