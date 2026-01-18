@@ -23,7 +23,7 @@ const { title, description, image, tags, githubUrl, demoUrl, slug } = Astro.prop
       />
     ) : (
       <div class="absolute inset-0 flex items-center justify-center">
-        <svg class="w-16 h-16 text-primary-300 dark:text-primary-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg class="w-16 h-16 text-primary-300 dark:text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
         </svg>
       </div>
@@ -82,7 +82,7 @@ const { title, description, image, tags, githubUrl, demoUrl, slug } = Astro.prop
         </span>
       ))}
       {tags.length > 4 && (
-        <span class="px-2 py-1 text-xs font-medium rounded-md bg-surface-200 dark:bg-surface-700 text-surface-600 dark:text-surface-400">
+        <span class="px-2 py-1 text-xs font-medium rounded-md bg-surface-200 dark:bg-surface-700 text-surface-600 dark:text-surface-200">
           +{tags.length - 4}
         </span>
       )}
