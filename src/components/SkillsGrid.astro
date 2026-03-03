@@ -2,7 +2,7 @@
 interface Skill {
   name: string;
   icon: string;
-  category: 'ml' | 'data' | 'cloud' | 'tools';
+  category: 'ml' | 'data' | 'tools';
 }
 
 interface Props {
@@ -14,20 +14,14 @@ const defaultSkills: Skill[] = [
   { name: 'Context Engineering', icon: 'context', category: 'ml' },
   { name: 'Prompt Engineering', icon: 'prompt', category: 'ml' },
   { name: 'LangChain', icon: 'langchain', category: 'ml' },
-  { name: 'OpenAI', icon: 'openai', category: 'ml' },
   { name: 'Anthropic', icon: 'anthropic', category: 'ml' },
   { name: 'Hugging Face', icon: 'huggingface', category: 'ml' },
   { name: 'PyTorch', icon: 'pytorch', category: 'ml' },
+  { name: 'TensorFlow', icon: 'tensorflow', category: 'ml' },
   // Programming & Frameworks
   { name: 'Python', icon: 'python', category: 'data' },
   { name: 'Django', icon: 'django', category: 'data' },
   { name: 'MATLAB', icon: 'matlab', category: 'data' },
-  { name: 'TensorFlow', icon: 'tensorflow', category: 'data' },
-  // Domains & Specializations
-  { name: 'UAV Analysis', icon: 'uav', category: 'cloud' },
-  { name: 'Computer Vision', icon: 'cv', category: 'cloud' },
-  { name: 'Robotics', icon: 'robot', category: 'cloud' },
-  { name: 'Security Audit', icon: 'security', category: 'cloud' },
   // Tools & Automation
   { name: 'Kubeflow', icon: 'kubeflow', category: 'tools' },
   { name: 'MLOps', icon: 'mlops', category: 'tools' },
@@ -43,7 +37,6 @@ const { skills = defaultSkills } = Astro.props;
 const categories = {
   ml: { label: 'AI & Prompt Engineering', color: 'primary' },
   data: { label: 'Programming & Frameworks', color: 'accent' },
-  cloud: { label: 'Domains & Specializations', color: 'primary' },
   tools: { label: 'Tools & Automation', color: 'accent' },
 };
 ---
