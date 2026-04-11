@@ -28,3 +28,9 @@ pnpm-debug.log*
 
 # Original CV in root (duplicate - served from public/)
 CV MATTIA BRUSCIA*.pdf
+.vercel
+
+# Agent tool local dirs
+.agent/
+.agents/
+.trae/
